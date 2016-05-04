@@ -28,6 +28,9 @@ var Client = require('../models/client');
     })
     .delete((req, res) => {
       Client.findByIdAndRemove(req.params.id, (err, client) => {
+
+        console.log('req.params.id: ', req.params.id);
+        
         res.status(err ? 400 : 200).send(err);
       });
     })

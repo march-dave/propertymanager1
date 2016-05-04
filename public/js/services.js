@@ -4,18 +4,20 @@ var app = angular.module('propertymgrApp');
 
 app.service('ClientService', function($http, $q) {
 
-  // this.getAll = () => {
-  //   return $http({
-  //     method: "GET",
-  //     url: `/api/clients`,
-  //     cache: true
-  //   })
-  //   .then(res => $q.resolve(res.data));
-  // };
-
   this.getAll = () => {
-     return $http.get({'/api/clients', newClient}).then(res => $q.resolve(res.data));
-   };
+    return $http({
+      method: "GET",
+      url: `/api/clients`,
+      cache: true
+    })
+    .then(res => $q.resolve(res.data));
+  };
+
+  // this.getAll = () => {
+  //    return $http
+  //     .get({'/api/clients'})
+  //     .then(res => $q.resolve(res.data));
+  //  };
 
   this.create = newClient => {
      return $http.post('/api/clients', newClient);
