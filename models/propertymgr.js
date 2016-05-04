@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 // History, Science, Angular
-var Propertymgr = mongoose.model('propertymgr', {
+var Propertymgr = mongoose.model('propertymgrDB', {
   address: String,
   occupationstatus: String,
   rentprice: String,

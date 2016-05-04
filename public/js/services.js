@@ -1,103 +1,31 @@
 'use strict';
 
-var app = angular.module('flashcardApp');
+var app = angular.module('propertymgrApp');
 
-app.service('FlashCardService', function($http, $q) {
+app.service('ClientService', function($http, $q) {
+
+  // this.getAll = () => {
+  //   return $http({
+  //     method: "GET",
+  //     url: `/api/clients`,
+  //     cache: true
+  //   })
+  //   .then(res => $q.resolve(res.data));
+  // };
 
   this.getAll = () => {
-    return $http({
-      method: "GET",
-      url: `/api/flashcards`,
-      cache: true
-    })
-    .then(res => $q.resolve(res.data));
-  };
+     return $http.get({'/api/clients', newClient}).then(res => $q.resolve(res.data));
+   };
 
-  this.create = newFlashcard => {
-     return $http.post('/api/flashcards', newFlashcard);
+  this.create = newClient => {
+     return $http.post('/api/clients', newClient);
    };
 
   this.delete = function(id) {
-    return $http.delete(`/api/flashcards/${id}`);
+    return $http.delete(`/api/clients/${id}`);
   };
 
-  this.edit = function(id, flashcard) {
-    return $http.put(`/api/flashcards/${id}`, flashcard);
+  this.edit = function(id, client) {
+    return $http.put(`/api/clients/${id}`, client);
   }
 });
-
-//
-// // app.service('SwapiService', function ($http) {
-// //   this.getCharacters = () => {
-// //     $http.get('http://swapi.co/api/people')
-// //     .then(res => {
-// //       this.characters = res.data.results;
-// //     }, err => {
-// //       console.error(err);
-// //     });
-// //   };
-// // });
-//
-//
-// // app.service('People', function($q) {
-// //   var people = [{
-// //     name: 'Bob',
-// //     job: 'Marine biologist'
-// //   }, {
-// //     name: 'Dave',
-// //     job: 'Lion psychologist'
-// //   }, {
-// //     name: 'Jimmy',
-// //     job: 'Jello juggler'
-// //   }];
-// //
-// //   this.getAll = () => {
-// //     // return people;
-// //     return $q((resolve, reject) => {
-// //       resolve(people)
-// //     });
-// //   };
-// //
-// //   this.getByName = name => {
-// //     // returning a promise
-// //     return $q((resolve, reject) => {
-// //       var person = people.filter(obj => obj.name.toLowerCase() === name.toLowerCase())[0];
-// //
-// //       if(person) {
-// //         resolve(person); // trigger .then()
-// //       } else {
-// //         reject(new Error('Person not found'));  // trigger .catch()
-// //       }
-// //
-// //     });
-// //   };
-// // });
-//
-//
-// // app.service('PeopleList', function($q, $http) {
-// //
-// //   var peopleList = {};
-// //
-// //   // this.getCharacters = () => {
-// //   //   $http.get('http://swapi.co/api/people')
-// //   //   .then(res => {
-// //   //     this.characters = res.data.results;
-// //   //   }, err => {
-// //   //     console.error(err);
-// //   //   });
-// //   // };
-// //
-// //   this.getAll = () => {
-// //     // return people;
-// //     return $q((resolve, reject) => {
-// //
-// //       $http({
-// //       	url: 'http://swapi.co/api/people',
-// //       	method: 'GET'
-// //       }).then(function(res){
-// //         // resolve(peopleList)
-// //         resolve(res.data.results);
-// //       })
-// //     });
-// //   };
-// // });

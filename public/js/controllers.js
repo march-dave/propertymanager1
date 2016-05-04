@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('flashcardApp');
+var app = angular.module('propertymgrApp');
 
 app.controller('homeCtrl', function($scope, $q, $http, flashCardDex) {
   console.log('home', flashCardDex);

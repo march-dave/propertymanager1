@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('flashcardApp', ['ui.router']);
+var app = angular.module('propertymgrApp', ['ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 

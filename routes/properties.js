@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var Tree = require('../models/tree');
-
+// var Tree = require('../models/tree');
+var Flashcard = require('../models/flashcard');
 
 // GET /api/trees   ===> return array of all trees
 // GET /api/trees/id  ===> return one tree by id
@@ -10,7 +10,7 @@ var Tree = require('../models/tree');
 
 /* GET users listing. */
 router.get('/', (req, res) => {
-  Tree.find({}, (err, trees) => {
+  Flashcard.find({}, (err, trees) => {
     if(err) {
       res.status(400).send(err);
     } else {
@@ -22,17 +22,17 @@ router.get('/', (req, res) => {
 /* GET /api/trees/:id */
 router.get('/:id', (req, res) => {
 
-  Tree.findById(req.params.id, (err, trees) => {
+  Flashcard.findById(req.params.id, (err, flashcards) => {
     if(err) {
       res.status(400).send(err);
     } else {
-      res.send(trees);
+      res.send(flashcards);
     }
   });
 });
 
 router.delete('/:id', (req, res) => {
-  Tree.findByIdAndRemove(req.params.id, (err, trees) => {
+  Flashcard.findByIdAndRemove(req.params.id, (err, flashcards) => {
     if(err) {
       res.status(400).send(err);
     } else {
@@ -47,26 +47,25 @@ router.put('/:id', (req, res) => {
   // req.params.id --> docuemt id
   // req.body --> update obj
 
-  Tree.findByIdAndUpdate(req.params.id,  {$set: req.body},  {new: true}, (err, tree) => {
+  Flashcard.findByIdAndUpdate(req.params.id,  {$set: req.body},  {new: true}, (err, flashcard) => {
     if(err) {
       res.status(400).send(err);
     } else {
-      res.send(tree);
+      res.send(flashcard);
     }
   });
 });
 
 router.post('/', (req, res) => {
-  var tree = new Tree(req.body);
-  tree.save((err, savedTree) => {
+  var flashcard = new Flashcard(req.body);
+  flashcard.save((err, saveFlashcard) => {
 
     if(err) {
       res.status(400).send(err);
     } else {
-      res.send(savedTree);
+      res.send(saveFlashcard);
     }
   });
 });
-
 
 module.exports = router;
