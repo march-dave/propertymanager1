@@ -1,0 +1,34 @@
+<h1 class="text-center">Flash Card List!</h1>
+
+<button class="btn btn-default btn-lg" ui-sref='newFlashCard'>New Flash Card</button>
+
+<h3>Flash Card List</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Answer</th>
+      <th>Category</th>
+      <th>Question</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='card in cards track by $index'>
+      <td>{{ card.answer }}</td>
+      <td>{{ card.category }}</td>
+      <td>{{ card.question }}</td>
+      <td><i ng-click='edit(card)' class='glyphicon glyphicon-edit'></i></td>
+      <td><i ng-click='delete(card)' class='glyphicon glyphicon-remove-circle'></i></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
