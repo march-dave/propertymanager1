@@ -48,8 +48,9 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService) {
 
   $scope.updateClient = () => {
 
-    ClientService.getById($state.params.id)
+    ClientService.edit($state.params.id, $scope.client)
     .then( ()=>  {
+      $state.go('clients')
     })
     .catch(err => {
         console.log('err', err.data);
