@@ -8,7 +8,7 @@ app.service('ClientService', function($http, $q) {
     return $http({
       method: "GET",
       url: `/api/clients`,
-      cache: true
+      cache: false
     })
     .then(res => $q.resolve(res.data));
   };
@@ -18,6 +18,10 @@ app.service('ClientService', function($http, $q) {
   //     .get({'/api/clients'})
   //     .then(res => $q.resolve(res.data));
   //  };
+
+  this.getById = function(id) {
+     return $http.get(`/api/clients/${id}`);
+   };
 
   this.create = newClient => {
      return $http.post('/api/clients', newClient);

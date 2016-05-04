@@ -10,7 +10,11 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
   $scope.clients = clientDex;
 
   $scope.edit = function(client) {
-    ClientService.edit(client._id, client)
+
+    console.log('1111111');
+
+    $state.go('updateClient');
+    // ClientService.edit(client._id, client)
   }
 
   $scope.delete = client => {
@@ -28,35 +32,29 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
 
 app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientService) {
 
-  console.log('Add new ClientService', ClientService);
-
   $scope.addNewClient = () => {
     ClientService.create($scope.newClient)
     .then( ()=>  {
       $state.go('clients');
-
-      console.log('');
-
-
     })
     .catch(err => {
         console.log('err', err.data);
     });
-
-
-
   }
 });
 
-app.controller('flashcardlistCtrl', function($scope, $q, $http, flashCardDex, FlashCardService) {
-  $scope.cards = flashCardDex;
+app.controller('updateClientCtrl', function($scope, $state, $q, $http, ClientService) {
 
-  $scope.edit = function(card) {
-    FlashCardService.edit(card._id, card)
+  $scope.updateClient = () => {
+    console.log('3333333')
+    // ClientService.getById($scope.client.id)
+    ClientService.getById('57298df9a7b82a4143bdee57')
+    .then( ()=>  {
+      console.log($scope.client);
+      // $state.go('clients');
+    })
+    .catch(err => {
+        console.log('err', err.data);
+    });
   }
-
-  $scope.delete  = card => {
-    FlashCardService.delete(card._id);
-  }
-
 });

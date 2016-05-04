@@ -7,16 +7,18 @@
 <table class="table">
   <thead>
     <tr>
+      <th style='display: none'>Id</th>
       <th>Name</th>
       <th>Email</th>
       <th>Phone #</th>
       <th>Other information</th>
-      <th></th>
-      <th></th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat='client in clients track by $index'>
+      <td style='display: none'>{{ client._id }}</td>
       <td>{{ client.name }}</td>
       <td>{{ client.email }}</td>
       <td>{{ client.phonenum }}</td>

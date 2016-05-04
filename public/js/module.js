@@ -33,29 +33,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'newClientCtrl'
     })
 
-    .state('list', {
-      url: '/list/:id',
-      templateUrl: '/html/list.html',
-      controller: 'listCtrl'
-      ,
-      resolve: {
-        starDex: function(StarWars, $stateParams) {
-          var id = $stateParams.id;
-          return StarWars.getStarDex(id);
-        }
-      }
-    })
-    .state('detail', {
-      url: '/detail/:id',
-      templateUrl: '/html/detail.html',
-      controller: 'detailCtrl',
-      resolve: {
-        starwars: function(StarWars, $stateParams) {
-          var id = $stateParams.id;
-          return StarWars.getById(id);
-        }
-      }
-
+    .state('updateClient', {
+      url: '/updateClient',
+      templateUrl: '/html/updateClient.html'
+      ,controller: 'updateClientCtrl'
+      // ,
+      // resolve: {
+      //   clientById: function(ClientService, id) {
+      //     return ClientService.getById(id);
+      //   }
+      // }
     })
 
     $urlRouterProvider.otherwise('/');
