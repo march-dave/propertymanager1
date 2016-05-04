@@ -32,12 +32,28 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/newClient.html',
       controller: 'newClientCtrl'
     })
-
     .state('updateClient', {
       url: '/updateClient/:id',
       templateUrl: '/html/updateClient.html',
       controller: 'updateClientCtrl'
     })
+
+    .state('newProperty', {
+      url: '/newProperty',
+      templateUrl: '/html/newProperty.html',
+      controller: 'newPropertyCtrl'
+    })
+    .state('updateProperty', {
+      url: '/updateProperty/:id',
+      templateUrl: '/html/updateProperty.html',
+      controller: 'updatePropertyCtrl'
+    })
+    .state('properties', {
+      url: '/properties/:id',
+      templateUrl: '/html/properties.html',
+      controller: 'propertiesCtrl'
+    })
+
 
     $urlRouterProvider.otherwise('/');
 

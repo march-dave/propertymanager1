@@ -57,3 +57,24 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService) {
     });
   }
 });
+
+
+app.controller('propertiesCtrl', function($scope, $state, ClientService) {
+
+  // ClientService.getById($state.params.id)
+  //   .then(function(res){
+  //     $scope.client = res.data;
+  //   })
+  //
+  // $scope.updateClient = () => {
+  //
+  //   ClientService.edit($state.params.id, $scope.client)
+  //   .then( ()=>  {
+  //     $state.go('clients')
+  //   })
+  //   .catch(err => {
+  //       console.log('err', err.data);
+  //   });
+  // }
+
+});
