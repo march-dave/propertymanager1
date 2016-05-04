@@ -10,11 +10,7 @@ app.controller('clientsCtrl', function($scope, $state, $q, $http, clientDex, Cli
   $scope.clients = clientDex;
 
   $scope.edit = function(client) {
-
-    console.log('1111111');
-
-    $state.go('updateClient');
-    // ClientService.edit(client._id, client)
+      $state.go('updateClient', {"id": client._id});
   }
 
   $scope.delete = client => {
@@ -43,15 +39,17 @@ app.controller('newClientCtrl', function($scope, $state, $q, $http, ClientServic
   }
 });
 
-app.controller('updateClientCtrl', function($scope, $state, $q, $http, ClientService) {
+app.controller('updateClientCtrl', function($scope, $state, ClientService) {
+
+  ClientService.getById($state.params.id)
+    .then(function(res){
+      $scope.client = res.data;
+    })
 
   $scope.updateClient = () => {
-    console.log('3333333')
-    // ClientService.getById($scope.client.id)
-    ClientService.getById('57298df9a7b82a4143bdee57')
+
+    ClientService.getById($state.params.id)
     .then( ()=>  {
-      console.log($scope.client);
-      // $state.go('clients');
     })
     .catch(err => {
         console.log('err', err.data);

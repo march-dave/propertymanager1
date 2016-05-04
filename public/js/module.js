@@ -34,15 +34,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
 
     .state('updateClient', {
-      url: '/updateClient',
-      templateUrl: '/html/updateClient.html'
-      ,controller: 'updateClientCtrl'
-      // ,
-      // resolve: {
-      //   clientById: function(ClientService, id) {
-      //     return ClientService.getById(id);
-      //   }
-      // }
+      url: '/updateClient/:id',
+      templateUrl: '/html/updateClient.html',
+      controller: 'updateClientCtrl'
     })
 
     $urlRouterProvider.otherwise('/');
