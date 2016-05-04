@@ -1,1 +1,1 @@
-https://git.heroku.com/salty-badlands-25425.git
+https://safe-springs-78725.herokuapp.com/#/
