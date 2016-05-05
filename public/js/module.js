@@ -37,7 +37,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/updateClient.html',
       controller: 'updateClientCtrl'
     })
-
+    .state('properties', {
+      url: '/properties/:id',
+      templateUrl: '/html/properties.html',
+      controller: 'propertiesCtrl'
+      ,resolve: {
+        propertyDex: function(PropertymgrService) {
+          return PropertymgrService.getPropertyAll();
+        }
+      }
+    })
     .state('newProperty', {
       url: '/newProperty',
       templateUrl: '/html/newProperty.html',
@@ -47,11 +56,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/updateProperty/:id',
       templateUrl: '/html/updateProperty.html',
       controller: 'updatePropertyCtrl'
-    })
-    .state('properties', {
-      url: '/properties/:id',
-      templateUrl: '/html/properties.html',
-      controller: 'propertiesCtrl'
     })
 
 

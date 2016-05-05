@@ -58,23 +58,18 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService) {
   }
 });
 
+app.controller('propertiesCtrl', function($scope, $state, propertyDex,  PropertymgrService) {
+  $scope.properties = propertyDex;
+});
 
-app.controller('propertiesCtrl', function($scope, $state, ClientService) {
-
-  // ClientService.getById($state.params.id)
-  //   .then(function(res){
-  //     $scope.client = res.data;
-  //   })
-  //
-  // $scope.updateClient = () => {
-  //
-  //   ClientService.edit($state.params.id, $scope.client)
-  //   .then( ()=>  {
-  //     $state.go('clients')
-  //   })
-  //   .catch(err => {
-  //       console.log('err', err.data);
-  //   });
-  // }
-
+app.controller('newPropertyCtrl', function($scope, $state, $q, $http, PropertymgrService) {
+  $scope.addNewProperty = () => {
+    PropertymgrService.createProperty($scope.newProperty)
+    .then( ()=>  {
+      $state.go('properties');
+    })
+    .catch(err => {
+        console.log('err', err.data);
+    });
+  }
 });

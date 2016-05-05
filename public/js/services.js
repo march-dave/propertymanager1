@@ -12,13 +12,6 @@ app.service('ClientService', function($http, $q) {
     })
     .then(res => $q.resolve(res.data));
   };
-
-  // this.getAll = () => {
-  //    return $http
-  //     .get({'/api/clients'})
-  //     .then(res => $q.resolve(res.data));
-  //  };
-
   this.getById = function(id) {
      return $http.get(`/api/clients/${id}`);
    };
@@ -33,5 +26,32 @@ app.service('ClientService', function($http, $q) {
 
   this.edit = function(id, client) {
     return $http.put(`/api/clients/${id}`, client);
+  }
+});
+
+app.service('PropertymgrService', function($http, $q) {
+
+  this.getPropertyAll = () => {
+    return $http({
+      method: "GET",
+      url: `/api/properties`,
+      cache: false
+    })
+    .then(res => $q.resolve(res.data));
+  };
+  this.getPropertyById = function(id) {
+     return $http.get(`/api/properties/${id}`);
+   };
+
+  this.createProperty = newClient => {
+     return $http.post('/api/properties', newClient);
+   };
+
+  this.deleteProperty = function(id) {
+    return $http.delete(`/api/properties/${id}`);
+  };
+
+  this.editProperty = function(id, client) {
+    return $http.put(`/api/properties/${id}`, client);
   }
 });
