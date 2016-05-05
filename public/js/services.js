@@ -44,14 +44,14 @@ app.service('PropertymgrService', function($http, $q) {
    };
 
   this.createProperty = newClient => {
-     return $http.post('/api/properties', newClient);
+     return $http.post('/api/properties', newProperty);
    };
 
   this.deleteProperty = function(id) {
     return $http.delete(`/api/properties/${id}`);
   };
 
-  this.editProperty = function(id, client) {
-    return $http.put(`/api/properties/${id}`, client);
+  this.editProperty = function(id, property) {
+    return $http.put(`/api/properties/${id}`, property);
   }
 });

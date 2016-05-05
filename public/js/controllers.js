@@ -60,6 +60,23 @@ app.controller('updateClientCtrl', function($scope, $state, ClientService) {
 
 app.controller('propertiesCtrl', function($scope, $state, propertyDex,  PropertymgrService) {
   $scope.properties = propertyDex;
+
+
+  $scope.editProperty = function(property) {
+     $state.go('updateProperty', {"id": property._id});
+ }
+
+ $scope.deleteProperty = property => {
+
+   $scope.properties.splice(property._id, 1);
+   PropertymgrService.deleteProperty(property._id)
+   .then( ()=>  {
+     // $state.go('clients');
+   })
+   .catch(err => {
+     console.log('err', err.data);
+   });
+ }
 });
 
 app.controller('newPropertyCtrl', function($scope, $state, $q, $http, PropertymgrService) {
@@ -72,4 +89,23 @@ app.controller('newPropertyCtrl', function($scope, $state, $q, $http, Propertymg
         console.log('err', err.data);
     });
   }
+});
+
+app.controller('updatePropertyCtrl', function($scope, $state, PropertymgrService) {
+
+  PropertymgrService.getPropertyById($state.params.id)
+    .then(function(res){
+      $scope.property = res.data;
+    })
+
+  $scope.updateProperty = () => {
+    PropertymgrService.editProperty($state.params.id, $scope.property)
+    .then( ()=>  {
+      $state.go('properties')
+    })
+    .catch(err => {
+        console.log('err', err.data);
+    });
+  }
+
 });
